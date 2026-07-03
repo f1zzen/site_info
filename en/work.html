@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="../style2.css" />
+    <meta charset="utf-8">
+    <link rel="shortcut icon" type="image/jpg" href="../logo.png" />
+    <title>φzzen</title>
+    <meta name="description" content="">
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+	<meta property="og:image" content="" />
+	<meta property="twitter:card" content="summary_large_image">
+	<meta itemprop="ai-content-declaration:version" content="1.0.0-alpha1">
+    <meta itemprop="ai-content-declaration:level" content="none">
+</head>
+
+<body onresize="viewportSize()" onload="viewportSize()">
+    <input type="checkbox" class="theme-switch" id="theme-switch">
+	
+    <div id = "page">
+			<bg></bg>
+			
+			<header><h1>фzzen</h1><label for="theme-switch" class = "themebutton switch-label"><span style = "display: none;">Toggle theme mode</span></label></header>
+			<nav>
+				<a href = "index.html">main</a>
+				<a href = "sitemap.html">sitemap</a>
+				<a href = "../not_found.html">404</a>
+			</nav>
+			<wrapper>
+				<sidebar>
+					<aside>
+						<img src = '../lucky-star.gif'></img>
+					</aside>
+					<aside style = "flex-grow: 1; font-family: 'cozette';">
+					Site
+					<ul style="font-family: 'cozette';">
+						<li><a href = "index.html">Main</a></li>
+						<li><a href = "about.html">About me</a></li>
+						<li><a href = "sitemap.html">Sitemap</a></li>
+					</ul>
+					<br>
+					Other
+					<ul style = "font-family: 'cozette';">
+						<li style = "background-color: var(--theme-color-2);color: white;">Portfolio</li>
+						<li><a href = "arts.html">Arts</a></li>
+					</ul>
+					
+					</aside>
+					<aside class = "minitext">
+					<a href="https://t.me/notafizzzen?text=Привет,%20я%20заинтересован%20в%20сотрудничестве%20с%20тобой!%20Предлагаю%20тебе%20[ВАШЕ%20ПРЕДЛОЖЕНИЕ]">Your ad could be here ✉</a>
+					</aside>	
+					<aside class = "minitext">
+					AI was not involved <a href="https://declare-ai.org/1.0.0/non-creative.html">in creating the code!</a>
+					</aside>					
+				</sidebar>
+				<main>
+					
+				
+					<article>
+
+						<h2>My development</h2>
+						<div style="display: flex; gap: .5rem; padding: .2rem; flex-wrap: wrap;">
+							<div class="project-card">
+								<div class="project-info">
+    								<h3 class="project-title"><a href="https://t.me/zdotust">Z.UST</a></h3>
+    								<p class="project-desc"><p class="project-desc">Zapret.rUST (or Z.UST) stands for "Zapret GUI written in Rust" - hence the name. Ultimately, the project evolved into a universal solution for bypassing censorship in both Russia and Belarus, featuring a built-in <b>free</b> proxy, deep zapret configuration, and an intuitive interface. The project is still a W.I.P, with mobile development planned for the future.</p>
+  								</div>
+  								<img class="project-img" src="../projects/zust.jpg">
+							</div>
+							<div class="project-card">
+								<div class="project-info">
+    								<h3 class="project-title"><a href="index.html">fizzen.info</a></h3>
+    								<p class="project-desc">this site i guess?.. ┬─┬ノ( º _ ºノ)<br/><br/><span style="font-family: cozette;">               </span></p>
+  								</div>
+  								<img class="project-img" src="../projects/site.png">
+							</div>
+						</div>
+						</article>
+						<article>
+						<h2>Who I work/worked with</h2>
+						<div style="display: flex; gap: .5rem; padding: .2rem; flex-wrap: wrap;">
+							<div class="project-card">
+								<div class="project-info">
+    								<h3 class="project-title"><a href="https://discord.gg/overtimemc">Overtime</a></h3>
+    								<p class="project-desc">A Russian Minecraft server owned by my streamer friend <a href="https://www.twitch.tv/nikitasa_">NikitaSa!</a> I act as the tech admin and handle most of the heavy lifting: from writing plugins and various custom artifacts to server configuration, database management, bug fixes, and general maintenance.</p>
+  								</div>
+  								<img class="project-img" src="../projects/overtime.jpg">
+							</div>
+						</div>
+						</article>
+						<article>
+						<h2>Other stuff</h2>
+							<div style="display: flex; gap: .5rem; padding: .2rem; flex-wrap: wrap;">
+								<p class="project-desc">To be honest, I don't even have any ideas on what to write here... I'll probably just use this space for my future concepts...</p>
+								<p class="project-desc">It would be cool to launch my own server, I think. Maybe one day I'll get around to it... Or maybe this will become an ad spot... Who knows?...</p>
+							</div>
+						</article>
+						┤ If I forgot someone, please remind me... It's hard to keep track of everything, you know... ┬┴┬┴┤ ° ͜ʖ °)<br/>
+						┤ Decided not to add a <i>few</i> people here due to certain reasons. But overall, I've worked with some hyped guys.<br/><br/>
+						┤ If you want to know more about my portfolio, feel free to DM me.
+				</main>
+			</wrapper>
+			<footer>© f1zzen | 2026, example taken from soyatost</footer>
+			
+			
+			
+			
+			
+			
+		
+		
+        
+    </div>
+
+
+    <script>// This code is used to remember theme selection between page loads
+      const themeSwitch = document.querySelector('.theme-switch');
+      themeSwitch.checked = localStorage.getItem('switchedTheme') === 'true';
+
+      themeSwitch.addEventListener('change', function(e) {
+        if (e.currentTarget.checked === true) {
+          // Add item to localstorage
+          localStorage.setItem('switchedTheme', 'true');
+        } else {
+          // Remove item if theme is switched back to normal
+          localStorage.removeItem('switchedTheme');
+        }
+      });
+    </script>
+	<script>
+		function viewportSize(){
+		  if(window.innerWidth !== undefined && window.innerHeight !== undefined) { 
+			var w = window.innerWidth;
+			var h = window.innerHeight;
+		  } else {  
+			var w = document.documentElement.clientWidth;
+			var h = document.documentElement.clientHeight;
+		  }
+		  var txt = "Page size: width=" + w + "px, height=" + h + "px";
+		  document.getElementById("viewportSize").innerHTML = txt;
+		}
+	</script>
+	
+  
+
+</body></html>

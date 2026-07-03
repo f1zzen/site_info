@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="../style2.css" />
+    <meta charset="utf-8">
+    <link rel="shortcut icon" type="image/jpg" href="../logo.png" />
+    <title>φzzen</title>
+    <meta name="description" content="">
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+	<meta property="og:image" content="../logo.png" />
+	<meta itemprop="ai-content-declaration:version" content="1.0.0">
+	<meta itemprop="ai-content-declaration:level" content="non-creative">
+	<meta itemprop="ai-content-declaration:ai-name" content="Gemini">
+	<meta itemprop="ai-content-declaration:details"content="used for check mistakes in english version and fixes mistakes that saved me from hours of searching answer">
+</head>
+
+<body onresize="viewportSize()" onload="viewportSize()">
+    <input type="checkbox" class="theme-switch" id="theme-switch">
+	<div id="funny-overlay" class="shalost-pidor"><img src="../shalost/shalost.png"></div>
+    <audio id="funny-sound" src="../shalost/shalost.mp3" preload="auto"></audio>	
+    <div id = "page">
+			<bg></bg>
+			
+			<header><h1>фzzen</h1><label for="theme-switch" class = "themebutton switch-label"></label></header>
+			<nav>
+				<a href = "index.html">main</a>
+				<a href = "sitemap.html">sitemap</a>
+				<a href = "../not_found.html">404</a>
+			</nav>
+			<wrapper>
+				<sidebar>
+					<aside>
+						<img src = '../lucky-star.gif'></img>
+					</aside>
+					<aside style = "flex-grow: 1; font-family: 'cozette';">
+					Site
+					<ul style="font-family: 'cozette';">
+						<li><a href="index.html">Main</li>
+						<li><a href = "about.html">About me</a></li>
+						<li><a href = "sitemap.html">Sitemap</a></li>
+					</ul>
+					<br>
+					Other
+					<ul style = "font-family: 'cozette';">
+						<li><a href = "work.html">Portfolio</a></li>
+						<li style = "background-color: var(--theme-color-2);color: white;">Arts</a></li>
+					</ul>
+					
+					</aside>
+					<aside class = "minitext">
+					<a href="https://t.me/notafizzzen?text=Привет,%20я%20заинтересован%20в%20сотрудничестве%20с%20тобой!%20Предлагаю%20тебе%20[ВАШЕ%20ПРЕДЛОЖЕНИЕ]">Your ad could be here ✉</a>
+					</aside>	
+					<aside class = "minitext">
+					AI was not involved <a href="https://declare-ai.org/1.0.0/non-creative.html">in creating the code!</a>
+					</aside>					
+				</sidebar>
+				<main>
+					
+					<article>
+					<h2>Gallery</h2>
+                    ┤ I have collected here a variety of art related to me, look!<br/><br/>
+                    <div class="gallery">
+                        <div class="image-viewer" clicks="0">
+                            <div class="viewer-header">wtf.appimage</div>
+                            <div class="viewer-content"><img src="../arts/art_5.jpg"></div>
+                            <div class="viewer-footer">-/ baton11313131313...</div>
+                        </div>
+                        <div class="image-viewer">
+                            <div class="viewer-header">render.appimage</div>
+                            <div class="viewer-content"><img src="../arts/art_2.jpg"></div>
+                            <div class="viewer-footer">-/ me 💀</div>
+                        </div>
+                        <div class="image-viewer">
+                            <div class="viewer-header">art.appimage</div>
+                            <div class="viewer-content"><img src="../arts/art_6.jpg"></div>
+                            <div class="viewer-footer">-/ writer_end</div>
+                        </div>
+                        <div class="image-viewer">
+                            <div class="viewer-header">art.appimage</div>
+                            <div class="viewer-content"><img src="../arts/art_3.jpg"></div>
+                            <div class="viewer-footer">-/ aLIEn</div>
+                        </div>
+                        <div class="image-viewer">
+                            <div class="viewer-header">art.appimage</div>
+                            <div class="viewer-content"><img src="../arts/art_1.jpg"></div>
+                            <div class="viewer-footer">-/ SHAKALENAKU</div>
+                        </div>
+                    </div>    
+                    </article>
+				</main>
+			</wrapper>
+			<footer>© f1zzen | 2026, example taken from soyatost</footer>
+    </div>
+
+    <script>// This code is used to remember theme selection between page loads
+      const themeSwitch = document.querySelector('.theme-switch');
+      themeSwitch.checked = localStorage.getItem('switchedTheme') === 'true';
+
+      themeSwitch.addEventListener('change', function(e) {
+        if (e.currentTarget.checked === true) {
+          // Add item to localstorage
+          localStorage.setItem('switchedTheme', 'true');
+        } else {
+          // Remove item if theme is switched back to normal
+          localStorage.removeItem('switchedTheme');
+        }
+      });
+    </script>
+	
+	<script>
+        document.querySelectorAll('.image-viewer').forEach(viewer => {
+            viewer.addEventListener('click', function() {
+            let clicks = parseInt(this.getAttribute('clicks')) || 0;
+            clicks++;
+            this.setAttribute('clicks', clicks);
+
+            if (clicks === 30) {
+                this.setAttribute('clicks', '0');
+                trigger();
+            }
+            });
+        });
+
+        function trigger() {
+            const overlay = document.getElementById('funny-overlay');
+            const sound = document.getElementById('funny-sound');
+            if (!overlay || !sound) return;
+            overlay.classList.remove('shalost-out');
+            overlay.style.display = 'flex';
+            overlay.style.opacity = '1';
+            sound.currentTime = 0;
+            sound.play();
+            setTimeout(() => {
+                overlay.classList.add('shalost-out');
+            }, 2000);
+            setTimeout(() => {
+                overlay.style.display = 'none';
+            }, 6000);
+        }
+    </script>
+</body></html>

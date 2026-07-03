@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="../style2.css" />
+    <meta charset="utf-8">
+    <link rel="shortcut icon" type="image/jpg" href="../logo.png" />
+    <title>φzzen</title>
+    <meta name="description" content="">
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+	<meta property="og:image" content="" />
+	<meta property="twitter:card" content="summary_large_image">
+	<meta itemprop="ai-content-declaration:version" content="1.0.0-alpha1">
+    <meta itemprop="ai-content-declaration:level" content="none">
+</head>
+
+<body onresize="viewportSize()" onload="viewportSize()">
+    <input type="checkbox" class="theme-switch" id="theme-switch">
+	
+    <div id = "page">
+			<bg></bg>
+			
+			<header><h1>фzzen</h1><label for="theme-switch" class = "themebutton switch-label"><span style = "display: none;">Toggle theme mode</span></label></header>
+			<nav>
+				<a href = "index.html">main</a>
+				<a href = "sitemap.html">sitemap</a>
+				<a href = "../not_found.html">404</a>
+			</nav>
+			<wrapper>
+				<sidebar>
+					<aside>
+						<img src = '../lucky-star.gif'></img>
+					</aside>
+					<aside style = "flex-grow: 1; font-family: 'cozette';">
+					Site
+					<ul style="font-family: 'cozette';">
+						<li><a href = "index.html">Main</a></li>
+						<li style = "background-color: var(--theme-color-2);color: white;">About me</a></li>
+						<li><a href = "sitemap.html">Sitemap</a></li>
+					</ul>
+					<br>
+					Other
+					<ul style = "font-family: 'cozette';">
+						<li><a href = "work.html">Portfolio</a></li>
+						<li><a href = "arts.html">Arts</a></li>
+					</ul>
+					
+					</aside>
+					<aside class = "minitext">
+					<a href="https://t.me/notafizzzen?text=Привет,%20я%20заинтересован%20в%20сотрудничестве%20с%20тобой!%20Предлагаю%20тебе%20[ВАШЕ%20ПРЕДЛОЖЕНИЕ]">Your ad could be here ✉</a>
+					</aside>	
+					<aside class = "minitext">
+					AI was not involved <a href="https://declare-ai.org/1.0.0/non-creative.html">in creating the code!</a>
+					</aside>					
+				</sidebar>
+				<main>
+					
+					<article>
+					<h2>Who am I?</h2>
+					Hello again! My name is <b>F1zzen</b>!
+					<br><br>
+					Developing interesting (and sometimes hard to do) projects related to different industries in general - from an apps for working w zapret on Rust to simple plugins 4 minecraft.
+					<br><br>
+                    I position myself more as an enthusiast than a developer with extensive experience. However, I can work in a team or suggest something! I run my <a href="https://t.me/fizzeeen">telegram channel</a> where I show something interesting: my drawings, plugins for minecraft, projects, announcements and what not..
+					<br><br>
+					<h2>some cool facts?..</h2>
+					Previously I was on Windows, but soon switched to <span style="font-family: 'cozette';">Linux</span> <i>(if interested, fork of <span style="font-family: 'cozette';">Arch </span> - <span style="font-family: 'cozette';">CachyOS</span>)</i>.
+					<br>
+					With a <i><b>future</i></b> portfolio in mind, I decided to build this site. It will host interesting facts about me and <i><b>maybe</i></b> some other things... God knows what else might pop up here... maybe you should find it yourself?
+					<br><br>
+					Among other highlights I've written plugins for Vencord (and similar forks), plugins/mods for Minecraft (though mostly I use <a href="https://github.com/skriptlang/skript">Skript</a>), websites (I have the skill of working with <span style="font-family: 'cozette';">TailwindCSS</span>. I used components of different libraries, but then I decided to try something new).
+					<br>
+					I don’t know what else to add here - you can check out my favorite music in the sitemap and explore the rest.. Oh, yes.. The site is available in different languages!
+					<p></p>
+					</article>
+				</main>
+			</wrapper>
+			<footer>© f1zzen | 2026, example taken from soyatost</footer>
+			
+			
+			
+			
+			
+			
+		
+		
+        
+    </div>
+
+    <script>// This code is used to remember theme selection between page loads
+      const themeSwitch = document.querySelector('.theme-switch');
+      themeSwitch.checked = localStorage.getItem('switchedTheme') === 'true';
+
+      themeSwitch.addEventListener('change', function(e) {
+        if (e.currentTarget.checked === true) {
+          // Add item to localstorage
+          localStorage.setItem('switchedTheme', 'true');
+        } else {
+          // Remove item if theme is switched back to normal
+          localStorage.removeItem('switchedTheme');
+        }
+      });
+    </script>
+	
+	
+	
+  
+
+</body></html>

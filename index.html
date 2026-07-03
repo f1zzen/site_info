@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>??????</title>
+  <script>
+    let lang = navigator.language || navigator.userLanguage;
+    localStorage.setItem('lang_checked', 'true');
+    if (lang.startsWith('ru')) {
+        window.location.replace('ru/index.html');
+    } else {
+        window.location.replace('en/index.html');
+    }
+  </script>
+</head>
+<body>
+</body>
+</html>

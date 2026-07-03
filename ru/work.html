@@ -100,7 +100,24 @@
 				</main>
 			</wrapper>
 			<footer>© f1zzen | 2026, пример взят с soyatost</footer>
-			
+	<script>
+		document.addEventListener('DOMContentLoaded', () => {
+			const bg = document.querySelector("bg");
+			if (bg) {
+				bg.addEventListener('click', (e) => {
+					if (e.target === bg) {
+						bg.classList.remove('bonk');
+						void bg.offsetWidth;
+						bg.classList.add('bonk');
+						const index = Math.floor(Math.random() * 2) + 1; 
+						const path = `../pat${index}.ogg`; 
+						const bonk = new Audio(path);
+						bonk.play();
+					}
+				});
+			}
+		});
+	</script>			
 			
 			
 			

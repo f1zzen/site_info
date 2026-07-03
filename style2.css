@@ -557,6 +557,8 @@ aside li{border-bottom: 1px dotted dimgrey; margin-left: -2.5rem; padding-left: 
 .twitch { --g-icon: "🖳";}
 .namemc { --g-icon: "n"; --g-color: #6a6969;}
 .roblox { --g-icon: "〼"; --g-color:rgb(162, 75, 75);}
+.github { --g-icon: ""; --g-color: #606060 ;}
+.discord { --g-icon: ""; --g-color: #192b64 }
 
 .project-card {
   display: flex;
@@ -787,4 +789,18 @@ aside li{border-bottom: 1px dotted dimgrey; margin-left: -2.5rem; padding-left: 
 * {
   scrollbar-width: auto;
   scrollbar-color: var(--button-1) var(--button-2);
+}
+@keyframes bonk {
+  0% { transform: scale(1, 1); }
+  15% { transform: scale(1, 0.5); }
+  30% { transform: scale(1, 1); }
+  100% { transform: scale(1, 1); } 
+}
+
+bg::before {
+  transform-origin: bottom left;
+}
+
+bg.bonk::before {
+  animation: bonk 500ms ease-in; 
 }

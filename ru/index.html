@@ -111,6 +111,8 @@
 										<a href="https://t.me/zdotust" class="social-grid-item telegram">Z.UST</a>
 										<a href="https://ru.namemc.com/profile/F1zzen.1" class="social-grid-item namemc">NameMC</a>
 										<a href="https://www.roblox.com/users/3974549163/profile" class="social-grid-item roblox">Roblox</a>
+										<a href="https://github.com/f1zzen" class="social-grid-item github">Github</a>
+										<a href="https://discord.com/users/665520698143408138" class="social-grid-item discord">Discord</a>
 									</div>
 								</div>
 							</article>
@@ -314,7 +316,24 @@
 		}
 		});
     </script>
-
+	<script>
+		document.addEventListener('DOMContentLoaded', () => {
+			const bg = document.querySelector("bg");
+			if (bg) {
+				bg.addEventListener('click', (e) => {
+					if (e.target === bg) {
+						bg.classList.remove('bonk');
+						void bg.offsetWidth;
+						bg.classList.add('bonk');
+						const index = Math.floor(Math.random() * 2) + 1; 
+						const path = `../pat${index}.ogg`; 
+						const bonk = new Audio(path);
+						bonk.play();
+					}
+				});
+			}
+		});
+	</script>
 	
   </body>
 

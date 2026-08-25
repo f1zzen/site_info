@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>физзен</title>
+    <link rel="icon" href="circle-1.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #050506;
+            --fg: #f2f0ea;
+            --muted: #787874;
+            --accent: #80a4ad;
+            --border: #1d1d1f;
+            --mono: 'IBM Plex Mono', 'Courier New', monospace;
+            --sans: 'Inter', sans-serif;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--fg);
+            font-family: var(--sans);
+            min-height: 100vh;
+        }
+
+        ::selection { background: rgba(128, 164, 173, 0.3); }
+
+        .avatar, .logo, .prompt, .heading, .progress, .bottom-note {
+            -webkit-user-select: none;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+        img { -webkit-user-drag: none; }
+
+        #lines {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.4;
+        }
+
+        .vignette {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            background: radial-gradient(ellipse 85% 65% at 50% 42%, transparent 25%, rgba(5, 5, 6, 0.65) 100%);
+        }
+
+        .page {
+            position: relative;
+            z-index: 1;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 44px clamp(24px, 6vw, 72px) 34px;
+            min-height: 100vh;
+            min-height: 100svh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .site-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .avatar {
+            width: 34px;
+            height: 34px;
+            flex-shrink: 0;
+            transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .avatar:hover { transform: rotate(-10deg) scale(1.12); }
+        .avatar-img { width: 100%; height: 100%; object-fit: contain; display: block; }
+
+        .logo {
+            font-family: var(--mono);
+            font-size: 1.05rem;
+            letter-spacing: 0.01em;
+            color: var(--fg);
+        }
+
+        .cursor { color: var(--accent); animation: blink 1s steps(1) infinite; }
+        @keyframes blink { 50% { opacity: 0; } }
+
+        .center {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 48px 0;
+        }
+
+        .prompt {
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            color: var(--muted);
+            margin-bottom: 18px;
+        }
+
+        .heading {
+            font-family: var(--mono);
+            font-weight: 600;
+            font-size: clamp(1.25rem, 4.5vw, 2.1rem);
+            line-height: 1.4;
+            margin: 0;
+            max-width: 640px;
+            min-height: 1.4em;
+        }
+
+        .progress {
+            font-family: var(--mono);
+            font-size: 0.9rem;
+            color: #28B1F7;
+            margin-top: 22px;
+        }
+
+        .bottom-note {
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            color: var(--muted);
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .bottom-note a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(128, 164, 173, 0.35);
+            transition: border-color 0.15s;
+        }
+        .bottom-note a:hover { border-bottom-color: var(--accent); }
+    </style>
+</head>
+<body>
+
+    <canvas id="lines"></canvas>
+    <div class="vignette"></div>
+
+    <div class="page">
+
+        <header class="site-header">
+            <div class="avatar">
+                <img src="circle-1.png" alt="" class="avatar-img" id="circle-gif">
+            </div>
+            <span class="logo"><span id="logo-text">физзен</span><span class="cursor">_</span></span>
+        </header>
+
+        <main class="center">
+            <div class="prompt">~/maintenance</div>
+            <h1 class="heading"><span id="heading-text"></span><span class="cursor">_</span></h1>
+            <div class="progress" id="progress">&gt;:D</div>
+        </main>
+
+        <div class="bottom-note">
+            <span id="note-text">обновления можно посмотреть в моём</span>
+            <a id="tg-link" href="https://t.me/fizzeeen" target="_blank" rel="noopener">тгк ↗</a>
+        </div>
+
+    </div>
+
+    <script>
+        const LANGS = {
+            ru: {
+                heading: "сайт реконструируется, ожидайте!",
+                note: "обновления можно посмотреть в моём",
+                tgLink: "тгк ↗"
+            },
+            uk: {
+                heading: "сайт реконструюється, зачекайте!",
+                note: "оновлення можна подивитись у моєму",
+                tgLink: "тгк ↗"
+            },
+            en: {
+                heading: "site is under reconstruction, stay tuned!",
+                note: "updates are on my",
+                tgLink: "telegram ↗"
+            }
+        };
+
+        let t = LANGS.ru;
+
+        function detectLang() {
+            const lang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+            if (lang.startsWith('uk')) t = LANGS.uk;
+            else if (lang.startsWith('ru') || lang.startsWith('be') || lang.startsWith('kk')) t = LANGS.ru;
+            else t = LANGS.en;
+            document.documentElement.lang = lang.slice(0, 2);
+        }
+
+        addEventListener('languagechange', () => { detectLang(); applyLang(); });
+
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
+
+        const headingText = document.getElementById('heading-text');
+        const noteText = document.getElementById('note-text');
+        const tgLink = document.getElementById('tg-link');
+
+        let typeToken = 0;
+
+        async function typeHeading(text) {
+            const my = ++typeToken;
+            headingText.textContent = '';
+            if (reduceMotion) { headingText.textContent = text; return; }
+            for (let i = 1; i <= text.length; i++) {
+                if (my !== typeToken) return;
+                headingText.textContent = text.slice(0, i);
+                await sleep(45);
+            }
+        }
+
+        function applyLang() {
+            noteText.textContent = t.note;
+            tgLink.textContent = t.tgLink;
+            typeHeading(t.heading);
+        }
+
+        let aliases = [
+            { text: "f1zzen", color: null },
+            { text: "физзен", color: null },
+            { text: "φzen", color: null },
+            { text: ">:D",    color: "#28B1F7" }
+        ];
+        const ALIAS_HOLD_MS = 30 * 1000;
+        const TYPE_SPEED_MS = 70;
+        const ERASE_SPEED_MS = 40;
+
+        async function cycleAliases() {
+            let logoText = document.getElementById('logo-text');
+            if (!logoText || aliases.length === 0) return;
+            let index = 0;
+            while (true) {
+                let alias = aliases[index % aliases.length];
+                if (reduceMotion) {
+                    logoText.textContent = alias.text;
+                } else {
+                    for (let i = 0; i <= alias.text.length; i++) {
+                        logoText.textContent = alias.text.slice(0, i);
+                        await sleep(TYPE_SPEED_MS);
+                    }
+                }
+                logoText.style.color = alias.color || '';
+                await sleep(ALIAS_HOLD_MS);
+                if (!reduceMotion) {
+                    for (let i = alias.text.length; i >= 0; i--) {
+                        logoText.textContent = alias.text.slice(0, i);
+                        await sleep(ERASE_SPEED_MS);
+                    }
+                }
+                index++;
+            }
+        }
+        cycleAliases();
+
+        let circleImg = document.getElementById('circle-gif');
+        let circleFrames = ['circle-1.png', 'circle-2.png', 'circle-3.png', 'circle-4.png', 'circle-5.png'];
+        let currentFrame = 0;
+        let favLink = document.querySelector('link[rel="icon"]');
+
+        setInterval(() => {
+            currentFrame = (currentFrame + 1) % circleFrames.length;
+            circleImg.src = circleFrames[currentFrame];
+            if (favLink) favLink.href = circleFrames[currentFrame];
+        }, 1500);
+
+        const TITLE_CHARS = '&?~"№%^*@#$';
+        const baseTitle = document.title;
+        let titleWorker = null;
+
+        function randomGarbage() {
+            let s = '';
+            const len = 3 + (Math.random() * 3 | 0);
+            for (let i = 0; i < len; i++) {
+                s += TITLE_CHARS[Math.random() * TITLE_CHARS.length | 0];
+            }
+            return s;
+        }
+
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                const code = 'setInterval(() => postMessage(0), 50)';
+                titleWorker = new Worker(URL.createObjectURL(new Blob([code], { type: 'application/javascript' })));
+                titleWorker.onmessage = () => { document.title = randomGarbage(); };
+            } else if (titleWorker) {
+                titleWorker.terminate();
+                titleWorker = null;
+                document.title = baseTitle;
+            }
+        });
+
+        (function () {
+            const canvas = document.getElementById('lines');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+
+            function drawStaticLines() {
+                const W = canvas.width = innerWidth;
+                const H = canvas.height = innerHeight;
+                ctx.clearRect(0, 0, W, H);
+                ctx.lineWidth = 1;
+
+                const n = Math.min(28, Math.max(14, Math.round(W / 55)));
+                for (let i = 0; i < n; i++) {
+                    let px = Math.random() * W, py = Math.random() * H;
+                    ctx.strokeStyle = `rgba(240, 240, 235, ${0.035 + Math.random() * 0.05})`;
+                    ctx.beginPath();
+                    ctx.moveTo(px, py);
+                    const segs = 3 + (Math.random() * 4 | 0);
+                    for (let s = 0; s < segs; s++) {
+                        px += (Math.random() - 0.5) * W * 0.55;
+                        py += (Math.random() - 0.5) * H * 0.55;
+                        ctx.lineTo(px, py);
+                    }
+                    ctx.stroke();
+                }
+            }
+
+            drawStaticLines();
+            let resizeTimer;
+            addEventListener('resize', () => {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(drawStaticLines, 200);
+            });
+        })();
+
+        detectLang();
+        applyLang();
+    </script>
+</body>
+</html>

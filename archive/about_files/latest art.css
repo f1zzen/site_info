@@ -1,0 +1,93 @@
+:root{
+    --backgroundimg: var(--img5);
+    
+    --img1: url('https://secure.static.tumblr.com/48fc2d6ac28e8e579cd41cd798a4b244/b2hq54p/t79njv7ah/tumblr_static_tumblr_static_9iw435u12iw4c4c8gkwkkgcko_640.gif');
+    --img2: url('https://i.giphy.com/media/WrUOlEoYhJ6wog4hCJ/giphy.webp');
+    --img3: url('https://64.media.tumblr.com/2d8418a846caa2d3a01628358d110b5d/tumblr_pbo35jAsnK1rn5gv3o2_r1_500.gif');
+    --img4: url('https://i.giphy.com/media/jAe22Ec5iICCk/giphy.webp');
+    --img5: url('https://i.giphy.com/media/Eqz8ZFUScPHH2/giphy.webp');
+    --img6: url('https://media.tenor.com/xdbCSQDftSIAAAAd/core-real.gif');
+    
+    
+}
+
+/* Badges */
+badge{
+	border: 1px solid black; 
+	box-shadow: 1px 1px grey, inset 1px 1px white, inset -1px -1px white, inset -1px 1px white, inset 1px -1px white;
+	font-family: cozette; 
+	font-size: 13px; 
+	padding: 0; margin: 0; 
+	line-height: .6rem; 
+	border-radius: 5px; 
+	width: 88px; height: 15px;
+	color: black; 
+	background-color: #dad2df; 
+	padding: .1rem; padding-left: 0;
+	overflow: hidden;
+}
+badge > span {font-family: cozette; font-size: 13px;}
+.badgeicon{padding: .3rem; margin-right: .1rem; color: white; text-shadow: -1px -1px #333333ee;}
+
+/* Latest art display on index page.*/
+.artdisplay{
+	background-image: url('art/koishi.png');
+	background-size: 450px auto;
+	background-position: 30% 50%; 
+	flex-grow: 1;
+	min-height: 200px;
+	border: 1px solid grey; 
+	background-repeat:no-repeat;
+}
+.artdisplaycaption{
+	background-color: #55555566;
+	flex-basis: 30%;
+	flex-grow: 0;
+	padding: .5rem;
+	box-shadow: inset -1px -1px 1px #55555599;
+	display: none;
+}
+.triangle-left {
+	width: 0;
+	height: 0;
+	border-top: 10px solid transparent;
+	border-right: 20px solid #55555566;
+	border-bottom: 10px solid transparent;
+	margin: 5rem -1rem;
+	padding-left: .2em;
+	display: none;
+}
+
+/*Intro box side banner*/
+
+.introboximg{
+    background-size: cover;
+    background-position: top 50% left 50%;
+    background-image: var(--backgroundimg);
+}
+
+.theme-switch:checked ~ #page {
+    --backgroundimg: var(--img6);
+}
+@media (prefers-color-scheme: dark) {
+:root{	
+  --backgroundimg: var(--img6);
+}
+.theme-switch:checked ~ #page {
+  --backgroundimg: var(--img5);
+}
+}
+
+@media only screen and (min-width: 641px) {
+
+.artdisplay{flex-basis: 60%;flex-grow: 1;}
+.artdisplaycaption{display: inline-block; max-height: 50vmin;}
+.triangle-left{display: inline-block;}
+.artbox{height: 100%; display: flex; gap: 1rem; padding: .5vmin;}
+}
+
+@media only screen and (max-width:1000px){
+.artbox{display: block;}
+.triangle-left{display:none;}
+.artdisplaycaption{margin-top: 1rem;}
+}
